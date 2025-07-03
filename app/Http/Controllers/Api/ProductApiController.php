@@ -36,7 +36,7 @@ class ProductApiController extends Controller
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'category_id' => 'required|exists:categories,id',
+            // 'category_id' => 'required|exists:categories,id',
         ]);
         if ($validator->fails()) return response()->json(['errors' => $validator->errors()], 422);
 

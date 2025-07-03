@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id('pid');
             $table->unsignedBigInteger('cid')->nullable()->after('pid');
-            $table->foreign('cid')->references('cid')->on('customers')->onDelete('set null');
             $table->string('name');
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);

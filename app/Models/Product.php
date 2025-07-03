@@ -10,7 +10,7 @@ class Product extends Model
     protected $keyType = 'int';
     protected $primaryKey = 'pid';
     protected $fillable = [
-        'cid',
+        // 'cid',
         'name',
         'description',
         'price',
