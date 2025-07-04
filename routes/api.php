@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\ProductApiController;
 use App\Http\Controllers\Api\CustomerApiController;
+use App\Http\Controllers\Api\OrderApiController;
+use App\Http\Controllers\Api\OrderItemApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +29,14 @@ Route::post('/test-email', [CustomerApiController::class, 'testEmail']);
 Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist']);
 Route::post('/orders/place', [OrderController::class, 'placeOrder']);
 
+// Order endpoints
+Route::post('/orders/place', [OrderApiController::class, 'placeOrder']);
+Route::get('/orders', [OrderApiController::class, 'index']);
+Route::get('/orders/customer/{customer_id}', [OrderApiController::class, 'listByCustomer']);
+Route::get('/orders/{oid}', [OrderApiController::class, 'show']);
+
+// Order item endpoints (if implemented)
+Route::get('orders/{order_id}/items', [OrderItemApiController::class, 'index']);
+Route::post('orders/{order_id}/items', [OrderItemApiController::class, 'store']);
+Route::put('orders/{order_id}/items/{item_id}', [OrderItemApiController::class, 'update']);
+Route::delete('orders/{order_id}/items/{item_id}', [OrderItemApiController::class, 'destroy']);

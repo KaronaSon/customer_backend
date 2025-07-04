@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderItem extends Model
 {
+
+    protected $primaryKey = 'tid'; // Add this line
+    public $incrementing = true;   // Add this if tid is auto-increment
+    protected $keyType = 'int';
     protected $fillable = ['order_id', 'product_id', 'quantity', 'price'];
     protected $casts = [
         'quantity' => 'integer',
@@ -19,7 +23,12 @@ class OrderItem extends Model
     }
 
     public function product()
-    {
-        return $this->belongsTo(Product::class);
-    }
+{
+    return $this->belongsTo(\App\Models\Product::class, 'product_id');
+}
+
+    // public function product()
+    // {
+    //     return $this->belongsTo(Product::class);
+    // }
 }
